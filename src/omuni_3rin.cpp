@@ -36,34 +36,34 @@ private:
         robomas_package_2::msg::MotorCmd cmd1;
 
         // --- motor1: 右スティックX（axes[3]） ---
-        cmd.id = 1;
-        cmd.mode = 1;  // SPEED mode
-        cmd.value = msg->axes[3] * 1000.0f;
-        out.cmds.push_back(cmd);
+        cmd1.id = 1;
+        cmd1.mode = 1;  // SPEED mode
+        cmd1.value = msg->axes[3] * 1000.0f;
+        out1.cmds.push_back(cmd1);
 
         // --- motor2: 左スティックX（axes[0]） ---
-        cmd.id = 2;
-        cmd.mode = 1;
-        cmd.value = msg->axes[0] * 1000.0f;
-        out.cmds.push_back(cmd);
+        cmd1.id = 2;
+        cmd1.mode = 1;
+        cmd1.value = msg->axes[0] * 1000.0f;
+        out1.cmds.push_back(cmd1);
 
         // --- motor3: LT (axes[2]) ---
         // ※コントローラによって値が 1→-1 or 0→1 など違うため必要に応じて調整
-        cmd.id = 3;
-        cmd.mode = 1;
-        cmd.value = msg->axes[2] * 1000.0f;
-        out.cmds.push_back(cmd);
+        cmd1.id = 3;
+        cmd1.mode = 1;
+        cmd1.value = msg->axes[2] * 1000.0f;
+        out1.cmds.push_back(cmd1);
 
-        pub_motor_->publish(out);
+        pub_motor_1_->publish(out1);
 
         
 
         RCLCPP_INFO(
             this->get_logger(),
             "m1=%.1f  m2=%.1f  m3=%.1f",
-            out.cmds[0].value,
-            out.cmds[1].value,
-            out.cmds[2].value
+            out1.cmds[0].value,
+            out1.cmds[1].value,
+            out1.cmds[2].value
         );
     }
 
